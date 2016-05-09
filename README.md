@@ -4,7 +4,9 @@ Use your Champion Mastery Points to determine which other champions you would en
 This recommender system is trained with a collaborative filtering, gradient descent algorithm.
 
 # How To Train Recommender
-1) Create a virtualenv directory called `env/`: `virtualenv env`
+1) Create a virtualenv directory called `env/`: 
+
+Ex: `$ virtualenv env`
 
 2) Install requirements specified in .requirements: `env/bin/pip install -r .requirements`. The *scipy* stack
 will require some build dependencies. These scripts only use *postgres* for the caching db.
@@ -22,4 +24,5 @@ This step will generate `dataset_raw.npy` and `dataset_normal.npy`.
 This step will generate `result_x.npy`, `result_x.json`, `result_theta.npy`, and `result_theta.json`.
 
 8) Predict with `predict_preferences.py` using arguments: region then summoner name. 
+
 Ex: `$ ./predict_preferences NA Bjergsen`
