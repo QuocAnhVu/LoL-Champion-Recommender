@@ -6,6 +6,7 @@ from matplotlib import pyplot as plt
 import json
 
 
+# Simultaneously trains x and theta using collaborative filtering
 def gradientDescent(x, y, theta, lamb, alpha, m, numIterations):
     cost_iteration_curve = []
     for i in range(numIterations):
@@ -23,6 +24,7 @@ def gradientDescent(x, y, theta, lamb, alpha, m, numIterations):
     return (cost_iteration_curve, x, theta)
 
 
+# Unregulated cost function for metrics
 def cost(x, y, theta):
     hypothesis = np.dot(theta, np.transpose(x))
     loss = np.multiply(hypothesis, y > 0) - y
@@ -55,12 +57,13 @@ lamb = .1
 alpha = .0001
 iterations = 10000
 temp_dataset = dataset[0:m]
-init_x = np.random.random_sample((champ_count, feature_count)) / 1000
-init_theta = np.random.random_sample((len(temp_dataset), feature_count)) / 1000
+init_x = (np.random.random_sample((champ_count, feature_count)) - 0.5) / 1000
+init_theta = (np.random.random_sample((len(temp_dataset), feature_count)) - 0.5) / 1000
 curve, x, theta = gradientDescent(init_x, temp_dataset, init_theta,
                                   lamb, alpha, len(temp_dataset), iterations)
 plt.plot(curve[100:])  # Initial cost is much higher than end
 
+# Save data as npy for future loading and json for browser usage
 json.dump(x.tolist(), open('result_x.json', 'wb'))
 json.dump(theta.tolist(), open('result_theta.json', 'wb'))
 np.save(open('result_x.npy', 'wb'), x)

@@ -20,9 +20,11 @@ api.set_api_key(keys.riotapikey)
 summ_region = sys.argv[1]
 api.set_region(summ_region)
 
+# TODO: Handle unicode characters in summoner names
 # Retrieve summoner
 summ_name = sys.argv[2]
-summ = api.get_summoners_by_name(summ_name)[summ_name.lower()]
+summ_name_key = summ_name.lower().replace(' ', '')
+summ = api.get_summoners_by_name(summ_name)[summ_name_key]
 
 # Create template summoner w/ empty ratings
 db = Session()
@@ -49,15 +51,14 @@ feature_count = len(x[0])
 init_theta = np.random.random_sample((1, feature_count))
 theta = train_theta(x, y, init_theta, lamb, alpha, iterations)
 
-print(theta)
-h = np.dot(theta, x.T)
-print(h)
-
+# Create champ_id: champ_name dictionary
 champ_dict = []
 for champ in db.query(Champion):
     champ_dict.append((champ.champion_id, champ.champion_name))
 champ_dict = sorted(champ_dict, key=lambda x: x[0])
 
+# Make predictions and print formatted results
+h = np.dot(theta, x.T)
 predictions = zip(champ_dict, h[0])
 predictions = sorted(predictions, key=lambda x: x[1])
 print(predictions)
