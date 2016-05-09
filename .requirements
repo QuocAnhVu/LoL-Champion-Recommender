@@ -4,3 +4,4 @@ matplotlib
 scikit-learn
 cassiopeia
 sqlalchemy
+psycopg2
