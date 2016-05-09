@@ -14,32 +14,41 @@ def train_theta(x, y, theta, lamb, alpha, numIterations):
         theta = theta - alpha * (np.dot(loss, x) + lamb * theta)
     return theta
 
-# Set up libraries, load saved x & load args
+# Set up libraries, load saved x
 x = np.load(open('result_x.npy', 'rb'))
-summ_region = sys.argv[1]
-summ_id = int(sys.argv[2])
 api.set_api_key(keys.riotapikey)
+summ_region = sys.argv[1]
 api.set_region(summ_region)
 
-# Create template user w/ empty ratings
+# Retrieve summoner
+summ_name = sys.argv[2]
+summ = api.get_summoners_by_name(summ_name)[summ_name.lower()]
+
+# Create template summoner w/ empty ratings
 db = Session()
 champ_dict = {}
 for champ in db.query(Champion):
     champ_dict[champ.champion_id] = 0
 
-# Fill in template user w/ summoner champion points
-masteries = api.get_champion_masteries(summ_id)
+# Fill in template summoner w/ specified summoner champion points
+masteries = api.get_champion_masteries(summ.id)
 for m in masteries:
     champ_dict[m.championId] = m.championPoints
-m_list = [champ_dict[champ_id] for champ_id in sorted(champ_dict.keys())]
-y = np.asarray(m_list)
+y_raw = [champ_dict[champ_id] for champ_id in sorted(champ_dict.keys())]
+
+# Normalize summoner champion points
+y_raw = np.asarray(y_raw)
+y_std = np.std(y_raw)
+y = y_raw / y_std
 
 # Train theta for user
 lamb = .1
 alpha = .0001
-iterations = 1000
+iterations = 5000
 feature_count = len(x[0])
 init_theta = np.random.random_sample((1, feature_count))
 theta = train_theta(x, y, init_theta, lamb, alpha, iterations)
 
 print(theta)
+h = np.dot(theta, x.T)
+print(h)
