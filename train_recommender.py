@@ -48,16 +48,17 @@ dataset = np.load(open('dataset_normal.npy', 'rb'))
 #     validation_curve.append(cost(x, temp_dataset, theta))
 # plt.plot(validation_curve)
 
-# Normal Training
+# Training
 m = None
 feature_count = 16
 lamb = .1
 alpha = .0001
+iterations = 10000
 temp_dataset = dataset[0:m]
-init_x = np.random.random_sample((champ_count, feature_count))
-init_theta = np.random.random_sample((len(temp_dataset), feature_count))
+init_x = np.random.random_sample((champ_count, feature_count)) / 1000
+init_theta = np.random.random_sample((len(temp_dataset), feature_count)) / 1000
 curve, x, theta = gradientDescent(init_x, temp_dataset, init_theta,
-                                  lamb, alpha, len(temp_dataset), 1000)
+                                  lamb, alpha, len(temp_dataset), iterations)
 plt.plot(curve[100:])  # Initial cost is much higher than end
 
 json.dump(x.tolist(), open('result_x.json', 'wb'))

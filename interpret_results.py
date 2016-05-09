@@ -16,5 +16,5 @@ result = zip(champ_dict, x)
 for c in result:
     print('{0}: {1}'.format(c[0][1], c[1].tolist()))
 simple_result = [(r[0][1], r[1]) for r in result]
-pdb.set_trace()
+# pdb.set_trace()
 # sorted(simple_result, key=lambda x: x[1][0])

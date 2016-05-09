@@ -52,3 +52,12 @@ theta = train_theta(x, y, init_theta, lamb, alpha, iterations)
 print(theta)
 h = np.dot(theta, x.T)
 print(h)
+
+champ_dict = []
+for champ in db.query(Champion):
+    champ_dict.append((champ.champion_id, champ.champion_name))
+champ_dict = sorted(champ_dict, key=lambda x: x[0])
+
+predictions = zip(champ_dict, h[0])
+predictions = sorted(predictions, key=lambda x: x[1])
+print(predictions)
