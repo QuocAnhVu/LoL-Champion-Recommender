@@ -6,9 +6,10 @@ import uwsgi
 
 
 def application(env, start_response):
-    start_response('200 OK', [('Content-Type', 'text/html')])
+    start_response('200 OK', [('Content-Type', 'application/json')])
     input_dict = urlparse.parse_qs(env['REQUEST_URI'])
     region = input_dict['region']
     summoner_name = input_dict['summoner_name']
     predictions = predictor.predict(region, summoner_name)
-    return ["<h1 style='color:blue'>Hello There!</h1>"]
+    pred_json = json.dumps(dict(predictions))
+    return [pred_json]
