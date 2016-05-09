@@ -4,7 +4,7 @@ Use your Champion Mastery Points to determine which other champions you would en
 This recommender system is trained with a collaborative filtering, gradient descent algorithm.
 
 # How To Train Recommender
-1) Create virtualenv directory called `env/`: `virtualenv env`
+1) Create a virtualenv directory called `env/`: `virtualenv env`
 
 2) Install requirements specified in .requirements: `env/bin/pip install -r .requirements`. The *scipy* stack
 will require some build dependencies. These scripts only use *postgres* for the caching db.
