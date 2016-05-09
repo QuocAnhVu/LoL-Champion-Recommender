@@ -1,0 +1,6 @@
+__pycache__
+env/*
+*db/*
+tmp/
+secret_keys.py*
+dataset*
