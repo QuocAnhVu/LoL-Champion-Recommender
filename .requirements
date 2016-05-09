@@ -5,3 +5,4 @@ scikit-learn
 cassiopeia
 sqlalchemy
 psycopg2
+uwsgi

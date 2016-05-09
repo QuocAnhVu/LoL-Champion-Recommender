@@ -14,51 +14,57 @@ def train_theta(x, y, theta, lamb, alpha, numIterations):
         theta = theta - alpha * (np.dot(loss, x) + lamb * theta)
     return theta
 
-# Set up libraries, load saved x
-x = np.load(open('result_x.npy', 'rb'))
-api.set_api_key(keys.riotapikey)
-summ_region = sys.argv[1]
-api.set_region(summ_region)
 
-# TODO: Handle unicode characters in summoner names
-# Retrieve summoner
-summ_name = sys.argv[2]
-summ_name_key = summ_name.lower().replace(' ', '')
-summ = api.get_summoners_by_name(summ_name)[summ_name_key]
+def predict(summ_region, summoner_name):
+    # Set up libraries, load saved x
+    x = np.load(open('result_x.npy', 'rb'))
+    api.set_api_key(keys.riotapikey)
+    api.set_region(summ_region)
 
-# Create template summoner w/ empty ratings
-db = Session()
-champ_dict = {}
-for champ in db.query(Champion):
-    champ_dict[champ.champion_id] = 0
+    # TODO: Handle unicode characters in summoner names
+    # Retrieve summoner
+    summ_name_key = summ_name.lower().replace(' ', '')
+    summ = api.get_summoners_by_name(summ_name)[summ_name_key]
 
-# Fill in template summoner w/ specified summoner champion points
-masteries = api.get_champion_masteries(summ.id)
-for m in masteries:
-    champ_dict[m.championId] = m.championPoints
-y_raw = [champ_dict[champ_id] for champ_id in sorted(champ_dict.keys())]
+    # Create template summoner w/ empty ratings
+    db = Session()
+    champ_dict = {}
+    for champ in db.query(Champion):
+        champ_dict[champ.champion_id] = 0
 
-# Normalize summoner champion points
-y_raw = np.asarray(y_raw)
-y_std = np.std(y_raw)
-y = y_raw / y_std
+    # Fill in template summoner w/ specified summoner champion points
+    masteries = api.get_champion_masteries(summ.id)
+    for m in masteries:
+        champ_dict[m.championId] = m.championPoints
+    y_raw = [champ_dict[champ_id] for champ_id in sorted(champ_dict.keys())]
 
-# Train theta for user
-lamb = .1
-alpha = .0001
-iterations = 5000
-feature_count = len(x[0])
-init_theta = np.random.random_sample((1, feature_count))
-theta = train_theta(x, y, init_theta, lamb, alpha, iterations)
+    # Normalize summoner champion points
+    y_raw = np.asarray(y_raw)
+    y_std = np.std(y_raw)
+    y = y_raw / y_std
 
-# Create champ_id: champ_name dictionary
-champ_dict = []
-for champ in db.query(Champion):
-    champ_dict.append((champ.champion_id, champ.champion_name))
-champ_dict = sorted(champ_dict, key=lambda x: x[0])
+    # Train theta for user
+    lamb = .1
+    alpha = .0001
+    iterations = 2000
+    feature_count = len(x[0])
+    init_theta = np.random.random_sample((1, feature_count))
+    theta = train_theta(x, y, init_theta, lamb, alpha, iterations)
 
-# Make predictions and print formatted results
-h = np.dot(theta, x.T)
-predictions = zip(champ_dict, h[0])
-predictions = sorted(predictions, key=lambda x: x[1])
-print(predictions)
+    # Create champ_id: champ_name dictionary
+    champ_dict = []
+    for champ in db.query(Champion):
+        champ_dict.append((champ.champion_id, champ.champion_name))
+    champ_dict = sorted(champ_dict, key=lambda x: x[0])
+
+    # Make predictions and print formatted results
+    h = np.dot(theta, x.T)
+    predictions = zip(champ_dict, h[0])
+    predictions = sorted(predictions, key=lambda x: x[1])
+    return predictions
+
+if(len(sys.argv) > 1):
+    summ_region = sys.argv[1]
+    summ_name = sys.argv[2]
+    predictions = predict(summ_region, summ_name)
+    print(predictions)
