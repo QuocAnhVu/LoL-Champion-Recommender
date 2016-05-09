@@ -17,5 +17,6 @@ will require some build dependencies. These scripts only use *postgres* for the 
 This step will generate `dataset_raw.npy` and `dataset_normal.npy`.
 
 6) Run `train_recommender.py` to generate x (champion features) and theta (dataset user preferences).
+This step will generate `result_x.npy`, `result_x.json`, `result_theta.npy`, and `result_theta.json`.
 
 7) You can use `interpret_results.py` to align champion names with their x's (features).
