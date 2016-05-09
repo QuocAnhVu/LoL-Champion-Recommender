@@ -15,7 +15,7 @@ def train_theta(x, y, theta, lamb, alpha, numIterations):
     return theta
 
 
-def predict(summ_region, summoner_name):
+def predict(summ_region, summ_name):
     # Set up libraries, load saved x
     x = np.load(open('result_x.npy', 'rb'))
     api.set_api_key(keys.riotapikey)
