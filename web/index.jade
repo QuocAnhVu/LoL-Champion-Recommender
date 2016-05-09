@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+  head
+    title= "Blitzcrank's Matchmaking Service"
+  body
+    .intro
+      h1 Blitzcrank's Matchmaking Service
+      h2 Discover new champions based on your current champion mastery!
+      input.name(placeholder="Summoner Name")
+      input.region(placeholder="Region")
+      button Submit
+
+    .content
+      .recommended
+        h3 You should try:
+        ul.user_rec
+      .mostplayed
+        h3 Your 3 most played champions are:
+        ul.user_mp
+        h3 People with similar preferences play:
+        ul.other_mp
