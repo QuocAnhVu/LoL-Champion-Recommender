@@ -6,3 +6,4 @@ secret_keys.py*
 dataset*
 *.json
 *.npy
+*.pyc
