@@ -1,5 +1,4 @@
 #!./env/bin/python
-import sqlite3
 from model import *
 from sqlalchemy import func
 import numpy as np
