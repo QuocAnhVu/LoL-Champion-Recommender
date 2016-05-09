@@ -15,7 +15,7 @@ will require some build dependencies. These scripts only use *postgres* for the 
 
 4) Run `model.py` to generate schema.
 
-5) Run `populate_mastery_dataset.py` to populate db with data from Riot's API.
+5) Run `populate_mastery_dataset.py` to populate the db with data from Riot's API.
 
 6) Run `preprocess_dataset.py` to convert db data to numpy objects and normalize the dataset. 
 This step will generate `dataset_raw.npy` and `dataset_normal.npy`.
