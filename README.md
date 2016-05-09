@@ -11,7 +11,7 @@ Ex: `$ virtualenv env`
 2) Install requirements specified in .requirements: `env/bin/pip install -r .requirements`. The *scipy* stack
 will require some build dependencies. These scripts only use *postgres* for the caching db.
 
-3) Create `secret_keys.py` and fill in the information. 
+3) Create `secret_keys.py` from `secret_keys.example.py` and fill in the blanks using your credentials. 
 
 4) Run `model.py` to generate schema.
 
