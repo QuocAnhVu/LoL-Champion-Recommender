@@ -59,7 +59,8 @@ def predict(summ_region, summoner_name):
 
     # Make predictions and print formatted results
     h = np.dot(theta, x.T)
-    predictions = zip(champ_dict, h[0])
+    champ_ids, champ_names = zip(*champ_dict)
+    predictions = zip(champ_names, h[0])
     predictions = sorted(predictions, key=lambda x: x[1])
     return predictions
 
