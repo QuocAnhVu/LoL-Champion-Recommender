@@ -1,7 +1,7 @@
 # LoL-Champion-Recommender
 Use your Champion Mastery Points to determine which other champions you would enjoy playing.
 
-This recommender system uses a collaborative filtering, machine learning algorithm to generate user-based recommendations.
+This recommender system is trained with a collaborative filtering, gradient descent algorithm.
 
 # How To Train Recommender
 1) Install requirements specified in .requirements: `pip install -r .requirements`. The *scipy* stack
