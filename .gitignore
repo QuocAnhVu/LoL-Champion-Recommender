@@ -2,6 +2,7 @@ __pycache__/
 env/*
 *db/*
 tmp/
+old/
 secret_keys.py*
 dataset*
 *.json
