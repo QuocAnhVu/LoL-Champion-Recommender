@@ -9,14 +9,16 @@ import json
 def gradientDescent(x, y, theta, lamb, alpha, m, numIterations):
     cost_iteration_curve = []
     for i in range(numIterations):
-        hypothesis = np.dot(theta, np.transpose(x))
+        hypothesis = np.dot(theta, x.T)
         loss = np.multiply(hypothesis, y > 0) - y
 
         x = x - alpha * (np.dot(loss.T, theta) + lamb * x)
         theta = theta - alpha * (np.dot(loss, x) + lamb * theta)
 
-        costReg = lamb * (np.sum(x) ** 2 + np.sum(theta) ** 2)
-        cost = np.sum(loss) ** 2
+        x_reg = np.sum(x) ** 2 / x.size
+        theta_reg = np.sum(theta) ** 2 / theta.size
+        cost_reg = lamb * (x_reg + theta_reg)
+        cost = np.sum(loss) ** 2 + cost_reg
         cost_iteration_curve.append(cost)
     return (cost_iteration_curve, x, theta)
 
@@ -29,24 +31,38 @@ def cost(x, y, theta):
 db = Session()
 summ_count = db.query(func.count('*')).select_from(Summoner).scalar()
 champ_count = db.query(func.count('*')).select_from(Champion).scalar()
-
-validation_curve = []
 dataset = np.load(open('dataset_normal.npy', 'rb'))
-# for m in xrange(100, 7100, 100):
-    # temp_dataset = dataset[0:m]
-temp_dataset = dataset[0:100]
-FEATURE_COUNT = 16
-x = np.random.random_sample((champ_count, FEATURE_COUNT))
-theta = np.random.random_sample((len(temp_dataset), FEATURE_COUNT))
-curve, x, theta = gradientDescent(x, temp_dataset, theta, .1, .0001, len(temp_dataset), 1000)
-validation_curve.append(cost(x, temp_dataset, theta))
 
-print(x)
-print(theta)
+# Validation Curve
+# validation_curve = []
+# for m in xrange(100, 7100, 100):
+#     temp_dataset = dataset[0:m]
+#     temp_dataset = dataset[0:100]
+#     feature_count = 16
+#     lamb = .1
+#     alpha = .0001
+#     x = np.random.random_sample((champ_count, feature_count))
+#     theta = np.random.random_sample((len(temp_dataset), feature_count))
+#     curve, x, theta = gradientDescent(x, temp_dataset, theta,
+#                                       lamb, alpha, len(temp_dataset), 1000)
+#     validation_curve.append(cost(x, temp_dataset, theta))
+
+# Normal Training
+m = None
+feature_count = 16
+lamb = .1
+alpha = .0001
+temp_dataset = dataset[0:m]
+x = np.random.random_sample((champ_count, feature_count))
+theta = np.random.random_sample((len(temp_dataset), feature_count))
+curve, x, theta = gradientDescent(x, temp_dataset, theta,
+                                  lamb, alpha, len(temp_dataset), 1000)
+
+plt.plot(curve[100:])  # Initial cost is much higher than end
+# plt.plot(validation_curve)
+plt.show()
+
 json.dump(x.tolist(), open('result_x.json', 'wb'))
 json.dump(theta.tolist(), open('result_theta.json', 'wb'))
 np.save(open('result_x.npy', 'wb'), x)
 np.save(open('result_theta.npy', 'wb'), theta)
-# plt.plot(curve[100:])
-plt.plot(curve)
-plt.show()
