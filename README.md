@@ -8,9 +8,11 @@ Super long writeup is at [www.quocanhvu.com/documentation](http://www.quocanhvu.
 Go to [www.quocanhvu.com](http://www.quocanhvu.com)
 
 # How do I train the recommender myself?
-1) Create a virtualenv directory called `env/`: 
+0) Install the dependencies listed in `package_dependencies.txt`. Those dependencies are for Ubuntu 14.04+
 
-Ex: `$ virtualenv env`
+1) Create a virtualenv directory called `env/`. I included system-wide packages so that the scipy stack would not have to be recompiled for the virtual environment.
+
+Ex: `$ virtualenv --system-site-packages env`
 
 2) Install requirements specified in .requirements: `env/bin/pip install -r .requirements`. The *scipy* stack
 will require some build dependencies. These scripts only use *postgres* for the caching db.

@@ -1,0 +1,8 @@
+Scipy Stack
+python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose libblas-dev liblapack-dev
+
+Matplotlib
+libfreetype6-dev libxft-dev
+
+Postgresql (psycopg2)
+libpq-dev python-dev
