@@ -6,3 +6,6 @@ libfreetype6-dev libxft-dev
 
 Postgresql
 postgresql libpq-dev python-dev
+
+Uwsgi
+libpcre3 libpcre3-dev

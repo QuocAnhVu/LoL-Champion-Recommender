@@ -37,4 +37,4 @@ def application(env, start_response):
     # Serve json of predictions
     start_response('200 OK', [('Content-Type', 'application/json')])
     pred_json = json.dumps(dict(predictions))
-    return [pred_json]
+    return [pred_json.encode('utf8')]
