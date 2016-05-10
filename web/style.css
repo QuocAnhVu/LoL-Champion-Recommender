@@ -19,7 +19,10 @@ h3 {
   .heart-shape, .heart-shape:before, .heart-shape:after {
     background-color: #fade4c; }
 
-#form {
+.seperator {
+  margin: 0 1em; }
+
+.intro {
   width: 40em;
   margin-top: 5%;
   margin-right: auto;

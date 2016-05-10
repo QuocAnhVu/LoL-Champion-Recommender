@@ -12,27 +12,36 @@ html(lang="en")
     script(src='script.js')
   body
     .heart-shape
-    #form
-      h1 Blitzcrank's Matchmaking Service
-      h2 Let the big robot discover which champions you will love!
-      input.input.summoner_name(placeholder="Summoner Name")
-      //- input.region(placeholder="Region")
-      select.input.region
-        option(value="NA") NA
-        option(value="EUW") EUW
-        option(value="EUNE") EUNE
-        option(value="KR") KR
-        option(value="BR") BR
-        option(value="LAN") LAN
-        option(value="LAS") LAS
-        option(value="OCE") OCE
-        option(value="RU") RU
-        option(value="TR") TR
-      button.submit Match Me &hearts;
-      .h3 What is this?
-      p Blitzcrank connects summoners with the champions that they are most likely to enjoy playing. 
-      p He does this by looking at thousands and thousands of players and paying attention to the groups of champions they like to play. He then uses these observations to assign special attributes to each champion. These attributes can be anything: mobility, ease of play, or even dashing good looks!
-      p Finally, Blitzcrank examines <span class="bold">you</span> by looking at all the champions that <span class="bold">you</span> play. He determines which champion attributes are your favorite. By combining the data from the special champion attributes with your personal preferences, Blitzcrank can make sure that your next champion will be one that <span class="bold">you truly love.</span>
+    .intro
+      .header
+        h1 Blitzcrank's Matchmaking Service
+        h2 Let the big robot discover which champions you will love!
+      .form
+        input.input.summoner_name(placeholder="Summoner Name")
+        //- input.region(placeholder="Region")
+        select.input.region
+          option(value="NA") NA
+          option(value="EUW") EUW
+          option(value="EUNE") EUNE
+          option(value="KR") KR
+          option(value="BR") BR
+          option(value="LAN") LAN
+          option(value="LAS") LAS
+          option(value="OCE") OCE
+          option(value="RU") RU
+          option(value="TR") TR
+        button.submit Match Me &hearts;
+      .description
+        .h3 What is this?
+        p Blitzcrank connects summoners with the champions that they are most likely to enjoy playing. 
+        p He does this by looking at thousands and thousands of players and paying attention to the groups of champions they like to play. He then uses these observations to assign special attributes to each champion. These attributes can be anything: mobility, ease of play, or even dashing good looks!
+        p Finally, Blitzcrank examines <span class="bold">you</span> by looking at all the champions that <span class="bold">you</span> play. He determines which champion attributes are your favorite. By combining the data from the special champion attributes with your personal preferences, Blitzcrank can make sure that your next champion will be one that <span class="bold">you truly love.</span>
+      .footer
+        a(href='/about') About
+        span.seperator |
+        a(href='/documentation') Documentation
+        span.seperator |
+        a(href='https://github.com/QuocAnhVu/LoL-Champion-Recommender') GitHub
 
 
     #content.hidden

@@ -23,7 +23,10 @@ h3 {
     background-color: $secondary-color;
   }
 }
-#form {
+.seperator {
+  margin: 0 1em;
+}
+.intro {
   width: 40em;
   margin-top: 5%;
   margin-right: auto;
