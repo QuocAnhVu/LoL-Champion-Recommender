@@ -22,9 +22,9 @@ html(lang="en")
       .nav
         a(href='/') Blitzcrank's Matchmaking Service
         span.seperator |
-        a(href='/about.html') About
-        span.seperator |
         span.bold Documentation
+        span.seperator |
+        a(href='/about.html') About
         span.seperator |
         a(href='https://github.com/QuocAnhVu/LoL-Champion-Recommender') GitHub
       .description
@@ -39,24 +39,30 @@ html(lang="en")
 
         p Finally, the prediction step is just a basic linear gradient descent using the user's data. This data is used to train a set of preferences. These preferences are basically multiplied by the corresponding champion attributes and totaled to generate a score.
 
-        p The specific steps to train a recommender using my scripts are in the readme of my GitHub page. Be forewarned: the scripts I wrote were meant to be ran once by hand. There isn't very much automation, and modification requires some expertise in machine learning.
+        p The specific steps to train a recommender using my scripts are in the readme of my GitHub page. Be forewarned: the scripts I wrote were meant to be ran by hand. Modification requires some knowledge of machine learning.
 
         h2 Limitations and Future Work
         p Blitzcrank's Matchmaking Service is not perfect! Although it can currently generate pretty good recommendations, there are a few flaws that require more work.
 
-        p #[span.bold Convergence: ] The champion attribute results of the training step can change with each training run, sometimes resulting in huge recommendation differences of a few champions. In general, a few other champions that will be highly recommended with each step, and the "class" of champions that are recommended are similar, but the algorithm needs more optimization to be more consistent.
+        p #[span.bold Convergence: ] The champion attribute results of the training step can change with each training run, sometimes resulting in huge recommendation differences of a few champions. Though in general, a few other champions will be highly recommended with each step and the "classes" of champions that are recommended are similar.
         p Future work will be on creating metrics to determine the effectiveness of the algorithm. These metrics will determine things like bias and variance, which will also highlight the future optimizations that would be most effective.
 
         p #[span.bold Dataset bias: ] The current dataset only includes master tier and challenger tier players. This means that the dataset will be heavily skewed towards picking champions that are both in-meta and chosen to win games. While this may help users choose strong champions, the purpose of this project was to increase the amount of fun for players of the game.
-        p The dataset needs to be expanded to include more ELOs for a wider variety of players. Furthermore, the algorithm needs to be changed in order to allow for stochastic changes, which will allow the algorithm to change its predictions to coincide with large shifts in the meta.
+        p The dataset needs to be expanded to include more ELOs for a wider variety of players. Furthermore, the algorithm needs to be changed in order to allow for stochastic learning, which will allow the algorithm to change its predictions to coincide with large shifts in the meta.
 
         p #[span.bold Scalability: ] In its current form, Blitzcrank can only generate recommendations for a small number of people. This is because the scripts were written to optimize development speed above all. A single training step for each new user takes about a second of CPU compute time, which is very expensive when you can't even afford a server.
-        p Previous ambitious plans for this project included client side training of user preferences. This would have effectively turned the backend server into a proxy for the Riot API. With this critical step of offloading CPU load onto browsers, the scalability of this system would increase by a thousand fold. It would only be limited by the Riot API rate limiter.
-      .footer
+        p Previous ambitious plans for this project included client side training of user preferences. This would have effectively turned the backend server into a proxy for the Riot API. With this critical step of offloading CPU load onto browsers, the scalability of this system would increase by a thousand fold.
+
+        p #[span.bold Other work: ] The front end is very sparse in its current state. Also, I had originally planned to create top recommendations which would bias scores by the date since the user last played a champion.  
+      .nav
         a(href='/') Blitzcrank's Matchmaking Service
-        span.seperator |
-        a(href='/about.html') About
         span.seperator |
         span.bold Documentation
         span.seperator |
+        a(href='/about.html') About
+        span.seperator |
         a(href='https://github.com/QuocAnhVu/LoL-Champion-Recommender') GitHub
+      .description
+        h2 Thank you!
+        p If you've read this far, wow, I really appreciate that. This project of mines represents a lot to me. 
+        p This project was meant to be a demonstration of my skills. As it turns out, it's also a demonstration of how much I can accomplish in 48 hours. If you're interested in contacting me, you can reach me at public.quocanhvu@gmail.com.
