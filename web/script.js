@@ -1,4 +1,11 @@
 `use strict`
+
+function scrollTo(id) {
+  $('html, body').animate({
+    scrollTop: $(id).offset().top
+  }, 1000);
+}
+
 function championSprite(cName) {
   name = cName.replace(/['\.\s]/g, '');
   return 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + name + '.png'
@@ -32,16 +39,22 @@ function displayContent(data) {
     var $li = createListItem(cName, cMastery);
     $ol.append($li);
   }
+
+  $('#content').removeClass('hidden');    
+  scrollTo('#content');
 }
 
 function displayError(jqXHR, textStatus, errorThrown) {
   console.log(textStatus);
+  $('ol.compatibility').prepend(
+    $('<li>').attr('class', 'compatibility row top-buffer').text(textStatus)
+  );
 }
 
 $(document).ready(function() {
   $('button.submit').click(function() {
-    var summoner_name = $('input.summoner_name').val();
-    var region = $('input.region').val();
+    var summoner_name = $('.input.summoner_name').val();
+    var region = $('.input.region').val();
     var url = 'predict?summoner_name=' + summoner_name + '&region=' + region
     console.log(url);
     $.ajax({
@@ -50,5 +63,9 @@ $(document).ready(function() {
 ,      success: displayContent,
       err: displayError
     });
+  });
+
+  $('#scrolltotop').click(function() {
+    scrollTo('html');
   });
 });

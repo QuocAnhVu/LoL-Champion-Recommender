@@ -1,14 +1,31 @@
 body {
   background-color: white; }
 
+h3 {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold; }
+
 .container {
   max-width: 500px; }
+
+#form {
+  width: 40em;
+  margin-top: 15%;
+  margin-right: auto;
+  margin-left: auto; }
+
+#content {
+  margin-top: 30%; }
+
+.hidden {
+  display: none; }
 
 .small-img {
   height: 3em;
   width: 3em; }
 
-.cName, .cMastery {
+li.compatibility {
   font-size: 2em; }
 
 .top-buffer {
@@ -20,14 +37,25 @@ ol {
     counter-reset: item; }
   ol li {
     counter-increment: item; }
-    ol li:before {
-      margin-right: 10px;
-      content: counter(item);
-      background: lightblue;
-      border-radius: 100%;
-      color: white;
-      width: 1.2em;
-      text-align: center;
-      display: inline-block; }
+
+.title {
+  margin-left: auto;
+  margin-right: auto; }
+  .title h3 {
+    margin-right: 10%; }
+
+.scrolltoarrow {
+  position: sticky;
+  float: left;
+  top: 10%;
+  margin-left: 10%;
+  cursor: pointer; }
+  .scrolltoarrow .glyphicon {
+    font-size: 5em; }
+  .scrolltoarrow .arrowlabel {
+    margin-left: 1.6em; }
+  .scrolltoarrow .glyphicon, .scrolltoarrow .arrowlabel {
+    float: left;
+    clear: left; }
 
 /*# sourceMappingURL=style.css.map */

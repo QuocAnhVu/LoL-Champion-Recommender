@@ -1,22 +1,37 @@
-!!! html
+doctype html
 html(lang="en")
   head
     meta(charset='utf-8')
     title= "Blitzcrank's Matchmaking Service"
     link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel='stylesheet')
     link(href='style.css', rel='stylesheet')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.js')
+    script(src='http://code.jquery.com/jquery-2.2.3.min.js')
+    //- script(src='https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.js')
     //- script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
     script(src='script.js')
   body
     #form
       h1 Blitzcrank's Matchmaking Service
       h2 Discover new champions based on your current champion mastery!
-      input.summoner_name(placeholder="Summoner Name")
-      input.region(placeholder="Region")
+      input.input.summoner_name(placeholder="Summoner Name")
+      //- input.region(placeholder="Region")
+      select.input.region
+        option(value="NA") NA
+        option(value="EUW") EUW
+        option(value="EUNE") EUNE
+        option(value="KR") KR
+        option(value="BR") BR
+        option(value="LAN") LAN
+        option(value="LAS") LAS
+        option(value="OCE") OCE
+        option(value="RU") RU
+        option(value="TR") TR
       button.submit Match me
 
-    #content
+    #content.hidden
+      .scrolltoarrow
+        span.glyphicon.glyphicon-menu-up
+        span.arrowlabel Top
       //- .recommended.list
       //-   h3 You should try:
       //-   ul.user_rec
@@ -26,5 +41,6 @@ html(lang="en")
       //-   h3 People with similar preferences play:
       //-   ul.other_mp
       .compatibility
-        h3 Compatibility scores with other champions:
+        .title.compatibility
+          h3 Compatibility scores with other champions:
         ol.compatibility.container
