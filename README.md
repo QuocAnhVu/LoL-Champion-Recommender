@@ -1,11 +1,13 @@
 # LoL-Champion-Recommender 
 The champion recommender (AKA Blitzcrank's Matchmaking Service) is a collaborative filtering, machine learning recommender system. It generates a set of attributes, then assigns levels of these attributes to each champion. For each app user, it tailors the user's preferences to champion attributes and generates play recommendations.
 
-The app is currently hosted at [www.quocanhvu.com](http://www.quocanhvu.com)
-
 Super long writeup is at [www.quocanhvu.com/documentation](http://www.quocanhvu.com/documentation.html)
 
-# How To Train Recommender
+# How do I run this app?
+
+Go to [www.quocanhvu.com](http://www.quocanhvu.com)
+
+# How do I train the recommender myself?
 1) Create a virtualenv directory called `env/`: 
 
 Ex: `$ virtualenv env`
