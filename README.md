@@ -8,9 +8,9 @@ Super long writeup is at [www.quocanhvu.com/documentation](http://www.quocanhvu.
 Go to [www.quocanhvu.com](http://www.quocanhvu.com)
 
 # How do I train the recommender myself?
-0) Install the dependencies listed in `package_dependencies.txt`. Those dependencies are for Ubuntu 14.04+
+0) Install the dependencies listed in `package_dependencies.txt`. Those dependencies were tested for Ubuntu 14.04+. After installing postgresql, you will need configure postgres by creating a daemon role and editing your pga_hba.conf to allow password authentication.
 
-1) Create a virtualenv directory called `env/`. I included system-wide packages so that the scipy stack would not have to be recompiled for the virtual environment. After installing postgresql, you will need configure postgres by creating a daemon role and editing your pga_hba.conf to allow password authentication.
+1) Create a virtualenv directory called `env/`. I included system-wide packages so that the scipy stack would not have to be recompiled for the virtual environment.
 
 Ex: `$ virtualenv --system-site-packages env`
 
