@@ -65,7 +65,7 @@ $(document).ready(function() {
     });
   });
 
-  $('#scrolltotop').click(function() {
+  $('.scrolltoarrow').click(function() {
     scrollTo('html');
   });
 });
