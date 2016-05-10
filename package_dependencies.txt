@@ -1,5 +1,5 @@
 Scipy Stack
-python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose libblas-dev liblapack-dev
+python3-numpy python3-scipy python3-matplotlib ipython3 ipython3-notebook python3-pandas python-sympy python3-nose libblas-dev liblapack-dev
 
 Matplotlib
 libfreetype6-dev libxft-dev
