@@ -1,4 +1,7 @@
 #!./env/bin/python
+# Serve Predictions
+# Serves predictions, skipping need for cgi with wsgi.
+# Inputs single region and summoner name and outputs user preferences.
 import predict_preferences as predictor
 import json
 from urllib.parse import parse_qs

@@ -1,4 +1,8 @@
 #!./env/bin/python
+# Predict Preferences
+# Algorithm: linear, gradient descent
+# Generates the input user's preferences based on previously generated
+# champion attribute data and user's champion masteries.
 import numpy as np
 import sys
 from cassiopeia import baseriotapi as api

@@ -1,4 +1,7 @@
 #!./env/bin/python
+# Train Recommender
+# Algorithm: collaborative filtering, linear, gradient descent
+# Trains recommender system using previously formatted dataset.
 import numpy as np
 from sqlalchemy import func
 from model import *

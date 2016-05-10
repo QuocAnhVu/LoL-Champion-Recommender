@@ -1,8 +1,12 @@
 #!./env/bin/python
+# Preprocess Dataset
+# Normalizes data by dividing by standard deviation
+# Converts data to numpy array for vectorization
 from model import *
 from sqlalchemy import func
 import numpy as np
 
+# Setup session
 db = Session()
 summ_count = db.query(func.count('*')).select_from(Summoner).scalar()
 champ_count = db.query(func.count('*')).select_from(Champion).scalar()

@@ -1,3 +1,6 @@
+#!./env/bin/python
+# Model
+# Creates a schema through the sqlachemy orm. Only supports postgresql.
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, ForeignKey

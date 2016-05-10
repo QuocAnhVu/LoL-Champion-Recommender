@@ -1,4 +1,7 @@
 #!./env/bin/python
+# Populate Mastery Dataset
+# Queries 8 regions and pulls summoner_ids and champion_masteries
+# of each master tier and challenger tier player.
 from model import *
 from sqlalchemy.orm import sessionmaker
 from cassiopeia import riotapi
