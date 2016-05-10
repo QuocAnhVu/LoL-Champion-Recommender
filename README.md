@@ -10,7 +10,7 @@ Go to [www.quocanhvu.com](http://www.quocanhvu.com)
 # How do I train the recommender myself?
 0) Install the dependencies listed in `package_dependencies.txt`. Those dependencies are for Ubuntu 14.04+
 
-1) Create a virtualenv directory called `env/`. I included system-wide packages so that the scipy stack would not have to be recompiled for the virtual environment.
+1) Create a virtualenv directory called `env/`. I included system-wide packages so that the scipy stack would not have to be recompiled for the virtual environment. After installing postgresql, you will need configure postgres by creating a daemon role and editing your pga_hba.conf to allow password authentication.
 
 Ex: `$ virtualenv --system-site-packages env`
 
@@ -31,6 +31,6 @@ This step will generate `result_x.npy`, `result_x.json`, `result_theta.npy`, and
 
 8) Predict with `predict_preferences.py` using arguments: region then summoner name. 
 
-Ex: `$ ./predict_preferences NA Bjergsen`
+Ex: `$ env/bin/python predict_preferences NA Bjergsen`
 
 9) Serve predictions over the web with `serve_predictions.py`. Run `serve_predictions.sh` to start the server on port 8080. This server only serves the prediction as a json. The rest of the app is inside web/ and must be served from a web server.
