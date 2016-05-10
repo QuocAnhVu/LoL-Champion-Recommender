@@ -14,7 +14,7 @@ Go to [www.quocanhvu.com](http://www.quocanhvu.com)
 
 Ex: `$ virtualenv -p python3 --system-site-packages env`
 
-2) Install required python packages. I installed the scipy stack systemwide first `pip3 install numpy scipy matplotlib`. The rest of the packages are specified in `.requirements`: `env/bin/pip install -r .requirements`.
+2) Install required python packages. The packages are specified in `.requirements`: `env/bin/pip install -r .requirements`.
 
 3) Create `secret_keys.py` from `secret_keys.example.py` and fill in the blanks using your credentials. 
 
