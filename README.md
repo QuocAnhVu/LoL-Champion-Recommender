@@ -14,11 +14,13 @@ Go to [www.quocanhvu.com](http://www.quocanhvu.com)
 
 Ex: `$ virtualenv -p python3 --system-site-packages env`
 
-2) Install required python packages. The packages are specified in `.requirements`: `env/bin/pip install -r .requirements`.
+2) Install required python packages. The packages are specified in `.requirements`.
+
+Ex: `env/bin/pip install -r .requirements`.
 
 3) Create `secret_keys.py` from `secret_keys.example.py` and fill in the blanks using your credentials. 
 
-4) Generate schema by running `model.py`.
+4) Generate the schema by running `model.py`.
 
 5) Populate the db with data from Riot's API by running `populate_mastery_dataset.py`.
 
@@ -28,7 +30,7 @@ This step will generate `dataset_raw.npy` and `dataset_normal.npy`.
 7) Train data. Run `train_recommender.py` to generate x (champion features) and theta (dataset user preferences).
 This step will generate `result_x.npy`, `result_x.json`, `result_theta.npy`, and `result_theta.json`.
 
-8) Predict with `predict_preferences.py` using arguments: region then summoner name. 
+8) Predict with `predict_preferences.py` using the arguments: region summoner_name. 
 
 Ex: `$ env/bin/python predict_preferences NA Bjergsen`
 
