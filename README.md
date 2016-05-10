@@ -8,14 +8,13 @@ Super long writeup is at [www.quocanhvu.com/documentation](http://www.quocanhvu.
 Go to [www.quocanhvu.com](http://www.quocanhvu.com)
 
 # How do I train the recommender myself?
-0) Install the dependencies listed in `package_dependencies.txt`. Those dependencies were tested for Ubuntu 14.04+. After installing postgresql, you will need configure postgres by creating a daemon role and editing your pga_hba.conf to allow password authentication.
+0) Install the dependencies listed in `package_dependencies.txt`. Those dependencies were tested for Ubuntu 14.04+. These scripts use *postgres* for the caching db. After installing postgresql, you will need configure postgres by creating a daemon role and editing your pga_hba.conf to allow password authentication.
 
-1) Create a virtualenv directory called `env/`. I included system-wide packages so that the scipy stack would not have to be recompiled for the virtual environment.
+1) Create a virtualenv directory called `env/`. Cassiopeia requires python3, so include that. I included system-wide packages so that the scipy stack would not have to be recompiled for the virtual environment.
 
-Ex: `$ virtualenv --system-site-packages env`
+Ex: `$ virtualenv -p python3 --system-site-packages env`
 
-2) Install requirements specified in .requirements: `env/bin/pip install -r .requirements`. The *scipy* stack
-will require some build dependencies. These scripts only use *postgres* for the caching db.
+2) Install required python packages. I installed the scipy stack systemwide first `pip3 install numpy scipy matplotlib`. The rest of the packages are specified in `.requirements`: `env/bin/pip install -r .requirements`.
 
 3) Create `secret_keys.py` from `secret_keys.example.py` and fill in the blanks using your credentials. 
 
