@@ -1,10 +1,11 @@
 __pycache__/
 .sass-cache/
 *.css.map
-env/*
 *db/*
 tmp/
 old/
+env/*
+log/*.log
 secret_keys.py*
 dataset*
 *.json
