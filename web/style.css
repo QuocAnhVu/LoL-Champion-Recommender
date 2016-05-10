@@ -9,6 +9,9 @@ h3 {
 .container {
   max-width: 500px; }
 
+.bold {
+  font-weight: bold; }
+
 .heart-shape {
   position: absolute;
   top: 20%;
