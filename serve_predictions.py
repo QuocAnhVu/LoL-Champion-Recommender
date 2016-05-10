@@ -9,12 +9,17 @@ import uwsgi
 from cassiopeia.type.api.exception import APIError
 
 
+# TODO: URI santization
+# TODO: Support for unicode characters
 def application(env, start_response):
+    # Extract input from query string
     qs = ''.join(env['REQUEST_URI'].split('?')[1:])
     query_dict = parse_qs(qs)
     region = query_dict['region'][0]
     summoner_name = query_dict['summoner_name'][0]
 
+    # TODO: Server not properly returning errors
+    # Generates predictions or returns error
     try:
         predictions = predictor.predict(region, summoner_name)
     except APIError as err:
@@ -28,6 +33,8 @@ def application(env, start_response):
         else:
             message = "Server returned {0}.".format(code)
         return [message]
+
+    # Serve json of predictions
     start_response('200 OK', [('Content-Type', 'application/json')])
     pred_json = json.dumps(dict(predictions))
     return [pred_json]

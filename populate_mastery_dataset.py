@@ -11,7 +11,7 @@ import time
 import sys
 
 
-# Query match data from Riot with error handling
+# Function to query match data from Riot with error handling
 def query_riot_api(function, *args):
     while(True):
         try:
