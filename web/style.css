@@ -1,3 +1,33 @@
+body {
+  background-color: white; }
 
+.container {
+  max-width: 500px; }
+
+.small-img {
+  height: 3em;
+  width: 3em; }
+
+.cName, .cMastery {
+  font-size: 2em; }
+
+.top-buffer {
+  margin-top: 1em; }
+
+ol {
+  list-style: none; }
+  ol:before {
+    counter-reset: item; }
+  ol li {
+    counter-increment: item; }
+    ol li:before {
+      margin-right: 10px;
+      content: counter(item);
+      background: lightblue;
+      border-radius: 100%;
+      color: white;
+      width: 1.2em;
+      text-align: center;
+      display: inline-block; }
 
 /*# sourceMappingURL=style.css.map */

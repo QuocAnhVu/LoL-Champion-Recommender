@@ -1,4 +1,6 @@
 __pycache__/
+.sass-cache/
+*.css.map
 env/*
 *db/*
 tmp/
