@@ -1,5 +1,5 @@
 body {
-  background-color: white; }
+  background-color: #48cccb; }
 
 h3 {
   text-align: center;
@@ -9,21 +9,29 @@ h3 {
 .container {
   max-width: 500px; }
 
+.heart-shape {
+  position: absolute;
+  top: 20%;
+  left: 50%; }
+  .heart-shape, .heart-shape:before, .heart-shape:after {
+    background-color: #fade4c; }
+
 #form {
   width: 40em;
-  margin-top: 15%;
+  margin-top: 5%;
   margin-right: auto;
   margin-left: auto; }
 
 #content {
-  margin-top: 30%; }
+  margin-top: 30%;
+  #background-color: #e6e6e6; }
 
 .hidden {
   display: none; }
 
 .small-img {
-  height: 3em;
-  width: 3em; }
+  height: 2em;
+  width: 2em; }
 
 li.compatibility {
   font-size: 2em; }

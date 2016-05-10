@@ -4,12 +4,14 @@ html(lang="en")
     meta(charset='utf-8')
     title= "Blitzcrank's Matchmaking Service"
     link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel='stylesheet')
+    link(href='heart.css', rel='stylesheet')
     link(href='style.css', rel='stylesheet')
     script(src='http://code.jquery.com/jquery-2.2.3.min.js')
     //- script(src='https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.js')
     //- script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
     script(src='script.js')
   body
+    .heart-shape
     #form
       h1 Blitzcrank's Matchmaking Service
       h2 Discover new champions based on your current champion mastery!
@@ -42,5 +44,5 @@ html(lang="en")
       //-   ul.other_mp
       .compatibility
         .title.compatibility
-          h3 Compatibility scores with other champions:
+          h3 Your Compatability Scores
         ol.compatibility.container

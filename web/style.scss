@@ -1,5 +1,8 @@
+$primary-color: rgb(72, 204, 203);
+$secondary-color: rgb(250, 222, 76);
+$tertiary-color: rgb(255,145,219);
 body { 
-  background-color: white;
+  background-color: $primary-color;
 }
 h3 {
   text-align: center;
@@ -9,22 +12,30 @@ h3 {
 .container {
   max-width: 500px;
 }
-
+.heart-shape{
+  position: absolute;    
+  top: 20%;
+  left: 50%;
+  &, &:before, &:after {
+    background-color: $secondary-color;
+  }
+}
 #form {
   width: 40em;
-  margin-top: 15%;
+  margin-top: 5%;
   margin-right: auto;
   margin-left: auto;
 }
 #content {
   margin-top: 30%;
+  #background-color: rgba(230,230,230,10)
 }
 .hidden {
   display: none;
 }
 .small-img {
-  height: 3em;
-  width: 3em;
+  height: 2em;
+  width: 2em;
 }
 li.compatibility {
   font-size: 2em;
