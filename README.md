@@ -1,7 +1,5 @@
-# LoL-Champion-Recommender
-Use your Champion Mastery Points to determine which other champions you would enjoy playing.
-
-This recommender system is trained with a collaborative filtering, gradient descent algorithm.
+# LoL-Champion-Recommender 
+The champion recommender (AKA Blitzcrank's Matchmaking Service) is a collaborative filtering, machine learning recommender system. It generates a set of attributes, then assigns levels of these attributes to each champion. For each app user, it tailors the user's preferences to champion attributes and generates play recommendations.
 
 # How To Train Recommender
 1) Create a virtualenv directory called `env/`: 

@@ -2,7 +2,7 @@ doctype html
 html(lang="en")
   head
     meta(charset='utf-8')
-    title= "About | Blitzcrank's Matchmaking Service"
+    title= "Documentation | Blitzcrank's Matchmaking Service"
     link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel='stylesheet')
     link(href='heart.css', rel='stylesheet')
     link(href='style.css', rel='stylesheet')
@@ -11,16 +11,47 @@ html(lang="en")
       .description
         h1 Documentation
         h2 No really, what is this?
-        p This Matchmaking Service is a collaborative filtering, machine learning recommender system. It is capable of assigning attributes to champions, and then it can tailor preferences to those attribute to each individual player.
+        p This Matchmaking Service is a collaborative filtering, machine learning recommender system. It generates a set of attributes, then assigns levels of these attributes to each champion. For each app user, it tailors the user's preferences to champion attributes and generates play recommendations.
 
         h2 How does it work?
-        p First, Blitzcrank scrapes player mastery data to see which champions are usually played together by certain players. It uses these clusters to assign each champion a set of attributes. These attributes represent the facets of the game that players enjoy the most.
+        p First, Blitzcrank scrapes player mastery data to see which champions are usually played together by certain players. It uses these clusters to assign each champion their attributes. These attributes represent the facets of the game that players enjoy the most. 
 
-        p When a user enters their information into the web app, their own mastery data is scraped. The individual player's preferences are learned using their mastery data. The combination of individual preferences and champion attributes are combined to produce a single score for each champion. This score represents how much a player is likely to enjoy a champion.
+        p Champion attributes are similar to in-game stats like armor, magic, and etc, but instead of combat stats, the attributes represent playstyle differences like the marksman-ness or the juggernaut-ness of a champion.
 
-        h2 How do I reproduce this data?
+        p When a user enters their information into the web app, their own mastery data is scraped. The individual player's preferences are learned using their mastery data. The combination of individual preferences and champion attributes are combined to produce a single score for each champion. This score represents how likely a player will enjoy a champion.
+      .nav
+        a(href='/') Blitzcrank's Matchmaking Service
+        span.seperator |
+        a(href='/about.html') About
+        span.seperator |
+        span.bold Documentation
+        span.seperator |
+        a(href='https://github.com/QuocAnhVu/LoL-Champion-Recommender') GitHub
+      .description
+        h2 How do I reproduce this?
+        p The actual training of the recommender consists of the following steps. 
+
+        p First, data must be scraped from the Riot API and cached. This data must be formatted so that a machine learning algorithm can easily perform quick vectorized matrix operations with it.
+
+        p Second, the training step consists of a linear collaborative filtering algorithm. In other words, it figures out BOTH the dataset users' preferences and champion attributes at the same time. It does this by doing gradient descent, which is a fancy way of saying: guessing, seeing how much you're wrong by, moving the numbers a little bit, and repeating a lot.
+
+        p Up to here, the data must be cached, because the previous steps take a long time to run.
+
+        p Finally, the prediction step is just a basic linear gradient descent using the user's data. This data is used to train a set of preferences. These preferences are basically multiplied by the corresponding champion attributes and totaled to generate a score.
+
+        p The specific steps to train a recommender using my scripts are in the readme of my GitHub page. Be forewarned: the scripts I wrote were meant to be ran once by hand. There isn't very much automation, and modification requires some expertise in machine learning.
 
         h2 Limitations and Future Work
+        p Blitzcrank's Matchmaking Service is not perfect! Although it can currently generate pretty good recommendations, there are a few flaws that require more work.
+
+        p #[span.bold Convergence: ] The champion attribute results of the training step can change with each training run, sometimes resulting in huge recommendation differences of a few champions. In general, a few other champions that will be highly recommended with each step, and the "class" of champions that are recommended are similar, but the algorithm needs more optimization to be more consistent.
+        p Future work will be on creating metrics to determine the effectiveness of the algorithm. These metrics will determine things like bias and variance, which will also highlight the future optimizations that would be most effective.
+
+        p #[span.bold Dataset bias: ] The current dataset only includes master tier and challenger tier players. This means that the dataset will be heavily skewed towards picking champions that are both in-meta and chosen to win games. While this may help users choose strong champions, the purpose of this project was to increase the amount of fun for players of the game.
+        p The dataset needs to be expanded to include more ELOs for a wider variety of players. Furthermore, the algorithm needs to be changed in order to allow for stochastic changes, which will allow the algorithm to change its predictions to coincide with large shifts in the meta.
+
+        p #[span.bold Scalability: ] In its current form, Blitzcrank can only generate recommendations for a small number of people. This is because the scripts were written to optimize development speed above all. A single training step for each new user takes about a second of CPU compute time, which is very expensive when you can't even afford a server.
+        p Previous ambitious plans for this project included client side training of user preferences. This would have effectively turned the backend server into a proxy for the Riot API. With this critical step of offloading CPU load onto browsers, the scalability of this system would increase by a thousand fold. It would only be limited by the Riot API rate limiter.
       .footer
         a(href='/') Blitzcrank's Matchmaking Service
         span.seperator |
