@@ -8,10 +8,10 @@ import json
 
 
 # Simultaneously trains x and theta using collaborative filtering
-def gradientDescent(x, y, theta, lamb, alpha, m, numIterations):
+def gradientDescent(x, y, theta, lamb, alpha, m, steps):
     cost_iteration_curve = []
-    for i in range(numIterations):
-        print("Iteration %i" % i)
+    for step in range(steps):
+        print("Step %i" % step)
         hypothesis = np.dot(theta, x.T)
         loss = np.multiply(hypothesis, y > 0) - y
 
@@ -40,7 +40,8 @@ m = None  # Specify subset of dataset to use. None means include entire dataset
 temp_dataset = dataset[0:m]
 
 # Repeat training step `iterations` times
-for iteration in range(10):
+for iteration in range(iterations):
+    print("Iteration %i" % iteration)
     # Train recommender
     init_theta = (np.random.random_sample((m_users, n)) - 0.5) / 1000
     init_x = (np.random.random_sample((m_champs, n)) - 0.5) / 1000
