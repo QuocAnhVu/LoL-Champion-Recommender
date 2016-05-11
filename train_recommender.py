@@ -67,8 +67,8 @@ curve, x, theta = gradientDescent(init_x, temp_dataset, init_theta,
 # plt.plot(curve[100:])  # Initial cost is much higher than end
 
 # Save data as npy for future loading and json for browser usage
-json.dump(x.tolist(), open('result_x.json', 'wb'))
-json.dump(theta.tolist(), open('result_theta.json', 'wb'))
+json.dump(x.tolist(), open('result_x.json', 'w'))
+json.dump(theta.tolist(), open('result_theta.json', 'w'))
 np.save(open('result_x.npy', 'wb'), x)
 np.save(open('result_theta.npy', 'wb'), theta)
 
