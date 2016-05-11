@@ -30,24 +30,27 @@ dataset = np.load(open('dataset_normal.npy', 'rb'))
 m_users = dataset.shape[0]
 m_champs = dataset.shape[1]
 
-# Train recommender
-m = None
-n = 16
-lamb = .1
-alpha = .0001
-iterations = 100000
+# Set gradient descent variables
+n = 16  # Number of champion features to train for
+lamb = .1  # Regularization strength
+alpha = .0001  # Amount of change per gradient descent step
+steps = 20000  # Amount of gradient descent steps per run
+iterations = 10  # Amount of times to run algorithm
+m = None  # Specify subset of dataset to use. None means include entire dataset
 temp_dataset = dataset[0:m]
-init_theta = (np.random.random_sample((m_users, n)) - 0.5) / 1000
-init_x = (np.random.random_sample((m_champs, n)) - 0.5) / 1000
-curve, x, theta = gradientDescent(init_x, temp_dataset, init_theta,
-                                  lamb, alpha, len(temp_dataset), iterations)
 
-# Save data as npy for future loading and json for browser usage
-json.dump(x.tolist(), open('result_x.json', 'w'))
-json.dump(theta.tolist(), open('result_theta.json', 'w'))
-np.save(open('result_x.npy', 'wb'), x)
-np.save(open('result_theta.npy', 'wb'), theta)
+# Repeat training step `iterations` times
+for iteration in range(10):
+    # Train recommender
+    init_theta = (np.random.random_sample((m_users, n)) - 0.5) / 1000
+    init_x = (np.random.random_sample((m_champs, n)) - 0.5) / 1000
+    curve, x, theta = gradientDescent(init_x, temp_dataset, init_theta,
+                                      lamb, alpha, len(temp_dataset), steps)
 
-# Plot cost-iteration curve
-plt.plot(curve)
+    # Save data as npy for future loading and json for browser usage
+    json.dump(x.tolist(), open('trainedX_%i.json' % iteration, 'w'))
+    np.save(open('trainedX_%i.npy' % iteration, 'wb'), x)
+
+    # Plot cost-iteration curve
+    plt.plot(curve)
 plt.show()
