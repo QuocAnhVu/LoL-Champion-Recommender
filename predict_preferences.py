@@ -21,7 +21,7 @@ def train_theta(x, y, theta, lamb, alpha, numIterations):
 
 def predict(summ_region, summ_name):
     # Set up libraries, load saved x
-    x = np.load(open('result_x.npy', 'rb'))
+    x = np.load(open('trainedX_avg.npy', 'rb'))
     api.set_api_key(keys.riotapikey)
     api.set_region(summ_region)
 

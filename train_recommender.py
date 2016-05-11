@@ -11,7 +11,8 @@ import json
 def gradientDescent(x, y, theta, lamb, alpha, steps):
     cost_iteration_curve = []
     for step in range(steps):
-        print("Step %i" % step)
+        if step % 1000 == 0:
+            print("Step %i/%i" % (step, steps))
         hypothesis = np.dot(theta, x.T)
         loss = np.multiply(hypothesis, y > 0) - y
 
@@ -40,18 +41,26 @@ m = None  # Specify subset of dataset to use. None means include entire dataset
 temp_dataset = dataset[0:m]
 
 # Repeat training step `iterations` times
+x_list = []
 for iteration in range(iterations):
-    print("Iteration %i" % iteration)
+    print("Iteration %i/%i" % (iteration, iterations))
     # Train recommender
     init_theta = (np.random.random_sample((m_users, n)) - 0.5) / 1000
     init_x = (np.random.random_sample((m_champs, n)) - 0.5) / 1000
     curve, x, theta = gradientDescent(init_x, temp_dataset, init_theta,
                                       lamb, alpha, steps)
-
+    x_list.append(x)
     # Save data as npy for future loading and json for browser usage
     json.dump(x.tolist(), open('trainedX_%i.json' % iteration, 'w'))
     np.save(open('trainedX_%i.npy' % iteration, 'wb'), x)
 
     # Plot cost-iteration curve
     plt.plot(curve)
+
+# Save average of each iteration
+x_avg = np.average(x_list, axis=0)
+json.dump(x_avg.tolist(), open('trainedX_avg.json', 'w'))
+np.save(open('trainedX_avg.npy', 'wb'), x_avg)
+
+# Examine validity of each run
 plt.show()
