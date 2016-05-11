@@ -12,11 +12,11 @@ Go to [www.quocanhvu.com](http://www.quocanhvu.com)
 
 1) Create a virtualenv directory called `env/`. Cassiopeia requires python3, so include that. I included system-wide packages so that the scipy stack would not have to be recompiled for the virtual environment.
 
-Ex: `$ virtualenv -p python3 --system-site-packages env`
+`$ virtualenv -p python3 --system-site-packages env`
 
 2) Install required python packages. The packages are specified in `.requirements`.
 
-Ex: `env/bin/pip install -r .requirements`.
+`env/bin/pip install -r .requirements`
 
 3) Create `secret_keys.py` from `secret_keys.example.py` and fill in the blanks using your credentials. 
 
@@ -32,6 +32,6 @@ This step will generate `result_x.npy`, `result_x.json`, `result_theta.npy`, and
 
 8) Predict with `predict_preferences.py` using the arguments: region summoner_name. 
 
-Ex: `$ env/bin/python predict_preferences NA Bjergsen`
+`$ env/bin/python predict_preferences NA Bjergsen`
 
 9) Serve predictions over the web with `serve_predictions.py`. Run `serve_predictions.sh` to start the server on port 8080. This server only serves the prediction as a json. The rest of the app is inside web/ and must be served from a web server.
