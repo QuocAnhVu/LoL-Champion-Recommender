@@ -7,7 +7,7 @@ function scrollTo(id) {
 }
 
 function championSprite(cName) {
-  name = cName.replace(/['\.\s]/g, '');
+  name = cName.replace(/'\.\s/g, '');
   return 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + name + '.png'
 }
 

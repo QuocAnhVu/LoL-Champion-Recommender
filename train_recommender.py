@@ -5,7 +5,7 @@
 import numpy as np
 from sqlalchemy import func
 from model import *
-# from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt
 import json
 
 
@@ -65,12 +65,12 @@ init_x = (np.random.random_sample((champ_count, feature_count)) - 0.5) / 1000
 init_theta = (np.random.random_sample((len(temp_dataset), feature_count)) - 0.5) / 1000
 curve, x, theta = gradientDescent(init_x, temp_dataset, init_theta,
                                   lamb, alpha, len(temp_dataset), iterations)
-# plt.plot(curve[100:])  # Initial cost is much higher than end
 
 # Save data as npy for future loading and json for browser usage
 json.dump(x.tolist(), open('result_x.json', 'w'))
 json.dump(theta.tolist(), open('result_theta.json', 'w'))
 np.save(open('result_x.npy', 'wb'), x)
 np.save(open('result_theta.npy', 'wb'), theta)
+plt.plot(curve[100:])  # Initial cost is much higher than end
 
-# plt.show()
+plt.show()
