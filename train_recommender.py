@@ -13,6 +13,7 @@ import json
 def gradientDescent(x, y, theta, lamb, alpha, m, numIterations):
     cost_iteration_curve = []
     for i in range(numIterations):
+        print("Iteration %i" % i)
         hypothesis = np.dot(theta, x.T)
         loss = np.multiply(hypothesis, y > 0) - y
 
