@@ -8,7 +8,7 @@ import json
 
 
 # Simultaneously trains x and theta using collaborative filtering
-def gradientDescent(x, y, theta, lamb, alpha, m, steps):
+def gradientDescent(x, y, theta, lamb, alpha, steps):
     cost_iteration_curve = []
     for step in range(steps):
         print("Step %i" % step)
@@ -46,7 +46,7 @@ for iteration in range(iterations):
     init_theta = (np.random.random_sample((m_users, n)) - 0.5) / 1000
     init_x = (np.random.random_sample((m_champs, n)) - 0.5) / 1000
     curve, x, theta = gradientDescent(init_x, temp_dataset, init_theta,
-                                      lamb, alpha, len(temp_dataset), steps)
+                                      lamb, alpha, steps)
 
     # Save data as npy for future loading and json for browser usage
     json.dump(x.tolist(), open('trainedX_%i.json' % iteration, 'w'))
