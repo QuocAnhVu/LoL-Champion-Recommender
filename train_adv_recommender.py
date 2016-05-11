@@ -37,10 +37,10 @@ def train_recommender(y, lamb, n):
     theta, x = unpack(theta_and_x)
     return (theta, x)
 
-dataset = np.load(open('dataset_normal.npy', 'rb'))[0:100]
+dataset = np.load(open('tmp/dataset_normal.npy', 'rb'))[0:100]
 lamb = 0.1
 feature_count = 16
 theta, x = train_recommender(dataset, lamb, feature_count)
 
-np.save(open('trained_x.npy', 'wb'), x)
-np.save(open('trained_theta.npy', 'wb'), theta)
+np.save(open('tmp/trained_x.npy', 'wb'), x)
+np.save(open('tmp/trained_theta.npy', 'wb'), theta)
