@@ -3,8 +3,6 @@
 # Algorithm: collaborative filtering, linear, gradient descent
 # Trains recommender system using previously formatted dataset.
 import numpy as np
-from sqlalchemy import func
-from model import *
 from matplotlib import pyplot as plt
 import json
 
@@ -27,42 +25,20 @@ def gradientDescent(x, y, theta, lamb, alpha, m, numIterations):
         cost_iteration_curve.append(cost)
     return (cost_iteration_curve, x, theta)
 
-
-# Unregulated cost function for metrics
-def cost(x, y, theta):
-    hypothesis = np.dot(theta, np.transpose(x))
-    loss = np.multiply(hypothesis, y > 0) - y
-    cost = loss ** 2
-
-db = Session()
-summ_count = db.query(func.count('*')).select_from(Summoner).scalar()
-champ_count = db.query(func.count('*')).select_from(Champion).scalar()
+# Load dataset
 dataset = np.load(open('dataset_normal.npy', 'rb'))
+m_users = dataset.shape[0]
+m_champs = dataset.shape[1]
 
-# Validation Curve
-# validation_curve = []
-# for m in xrange(100, 7100, 100):
-#     temp_dataset = dataset[0:m]
-#     temp_dataset = dataset[0:100]
-#     feature_count = 16
-#     lamb = .1
-#     alpha = .0001
-#     init_x = np.random.random_sample((champ_count, feature_count))
-#     theta = np.random.random_sample((len(temp_dataset), feature_count))
-#     curve, x, theta = gradientDescent(init_x, temp_dataset, init_theta,
-#                                       lamb, alpha, len(temp_dataset), 1000)
-#     validation_curve.append(cost(x, temp_dataset, theta))
-# plt.plot(validation_curve)
-
-# Training
+# Train recommender
 m = None
-feature_count = 16
+n = 16
 lamb = .1
 alpha = .0001
 iterations = 100000
 temp_dataset = dataset[0:m]
-init_x = (np.random.random_sample((champ_count, feature_count)) - 0.5) / 1000
-init_theta = (np.random.random_sample((len(temp_dataset), feature_count)) - 0.5) / 1000
+init_theta = (np.random.random_sample((m_users, n)) - 0.5) / 1000
+init_x = (np.random.random_sample((m_champs, n)) - 0.5) / 1000
 curve, x, theta = gradientDescent(init_x, temp_dataset, init_theta,
                                   lamb, alpha, len(temp_dataset), iterations)
 
@@ -71,6 +47,7 @@ json.dump(x.tolist(), open('result_x.json', 'w'))
 json.dump(theta.tolist(), open('result_theta.json', 'w'))
 np.save(open('result_x.npy', 'wb'), x)
 np.save(open('result_theta.npy', 'wb'), theta)
-plt.plot(curve[100:])  # Initial cost is much higher than end
 
+# Plot cost-iteration curve
+plt.plot(curve)
 plt.show()

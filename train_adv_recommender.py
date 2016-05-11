@@ -26,8 +26,8 @@ def train_recommender(y, lamb, n):
     m_users = y.shape[0]
     m_champs = y.shape[1]
 
-    init_flat_theta = random.sample((m_users, n)).flatten()
-    init_flat_x = random.sample((m_champs, n)).flatten()
+    init_flat_theta = random.sample((m_users, n)).flatten() / 1000
+    init_flat_x = random.sample((m_champs, n)).flatten() / 1000
     init_theta_and_x = np.concatenate((init_flat_x, init_flat_theta))
 
     costfn = gen_costfn(y, lamb, n, m_users, m_champs)
