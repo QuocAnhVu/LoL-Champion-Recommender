@@ -27,7 +27,7 @@ def gradientDescent(x, y, theta, lamb, alpha, steps):
     return (cost_iteration_curve, x, theta)
 
 # Load dataset
-dataset = np.load(open('dataset_normal.npy', 'rb'))
+dataset = np.load(open('tmp/dataset_normal.npy', 'rb'))
 m_users = dataset.shape[0]
 m_champs = dataset.shape[1]
 
@@ -51,16 +51,16 @@ for iteration in range(iterations):
                                       lamb, alpha, steps)
     x_list.append(x)
     # Save data as npy for future loading and json for browser usage
-    json.dump(x.tolist(), open('trainedX_%i.json' % iteration, 'w'))
-    np.save(open('trainedX_%i.npy' % iteration, 'wb'), x)
+    json.dump(x.tolist(), open('tmp/trainedX_%i.json' % iteration, 'w'))
+    np.save(open('tmp/trainedX_%i.npy' % iteration, 'wb'), x)
 
     # Plot cost-iteration curve
     plt.plot(curve)
 
 # Save average of each iteration
 x_avg = np.average(x_list, axis=0)
-json.dump(x_avg.tolist(), open('trainedX_avg.json', 'w'))
-np.save(open('trainedX_avg.npy', 'wb'), x_avg)
+json.dump(x_avg.tolist(), open('tmp/trainedX_avg.json', 'w'))
+np.save(open('tmp/trainedX_avg.npy', 'wb'), x_avg)
 
 # Examine validity of each run
 plt.show()

@@ -27,14 +27,14 @@ for summ in db.query(Summoner):
 
 # Convert dataset from python object to numpy matrix
 data_np = np.asmatrix(dataset)
-np.save(open('dataset_raw.npy', 'wb'), data_np)
+np.save(open('tmp/dataset_raw.npy', 'wb'), data_np)
 
 # Normalize data
-data_np = np.load(open('dataset_raw.npy', 'rb'))
+data_np = np.load(open('tmp/dataset_raw.npy', 'rb'))
 data_np = np.asmatrix(data_np)
 # avgs = np.average(data_np, axis=1)
 stds = np.std(data_np, axis=1)
 # avgs = np.dot(avgs, np.ones((1, champ_count)))
 stds = np.dot(stds, np.ones((1, champ_count)))
 normal_data_np = np.divide(data_np, stds)
-np.save(open('dataset_normal.npy', 'wb'), normal_data_np)
+np.save(open('tmp/dataset_normal.npy', 'wb'), normal_data_np)
