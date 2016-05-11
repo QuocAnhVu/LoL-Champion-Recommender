@@ -17,7 +17,7 @@ def gen_costfn(y, lamb, n, m_users, m_champs):
         hypothesis = np.dot(theta, x.T)
         loss = np.multiply(hypothesis, y > 0) - y
         reg = lamb * (np.sum(x ** 2) + np.sum(theta ** 2))
-        cost = loss ** 2 + reg
+        cost = np.sum(loss ** 2) + reg
         return cost
     return costfn
 
@@ -32,7 +32,7 @@ def train_recommender(y, lamb, n):
 
     costfn = gen_costfn(y, lamb, n, m_users, m_champs)
 
-    theta_and_x = minimize(costfn, init_theta_and_x, method='nelder-mead',
+    theta_and_x = minimize(costfn, init_theta_and_x, method='BFGS',
                            options={'xtol': 1e-8, 'disp': True})
     theta, x = unpack(theta_and_x)
     return (theta, x)
