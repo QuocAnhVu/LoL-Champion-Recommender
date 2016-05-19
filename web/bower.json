@@ -1,0 +1,21 @@
+{
+  "name": "web",
+  "homepage": "https://github.com/QuocAnhVu/LoL-Champion-Recommender",
+  "authors": [
+    "Quoc-Anh Vu"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Materialize": "materialize#^0.97.6"
+  }
+}
