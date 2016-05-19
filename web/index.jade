@@ -1,64 +1,50 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset='utf-8')
-    title= "Blitzcrank's Matchmaking Service"
-    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel='stylesheet')
-    link(href='heart.css', rel='stylesheet')
-    link(href='style.css', rel='stylesheet')
-    script(src='http://code.jquery.com/jquery-2.2.3.min.js')
-    //- script(src='https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.js')
-    //- script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
-    script(src='script.js')
-  body
-    .heart-shape
-    .intro
-      .header
-        h1 Blitzcrank's Matchmaking Service
-        h2 Let the big robot discover which champions you will love!
-      .form
-        input.input.summoner_name(placeholder="Summoner Name")
-        //- input.region(placeholder="Region")
-        select.input.region
-          option(value="NA") NA
-          option(value="EUW") EUW
-          option(value="EUNE") EUNE
-          option(value="KR") KR
-          option(value="BR") BR
-          option(value="LAN") LAN
-          option(value="LAS") LAS
-          option(value="OCE") OCE
-          option(value="RU") RU
-          option(value="TR") TR
-        button.submit Match Me &hearts;
-      .description
-        .h3 What is this?
-        p Blitzcrank connects summoners with champions that they will enjoy playing.
-        p He does this by looking at thousands and thousands of players and paying attention to the champions that are played together. He then uses these observations to assign special attributes to each champion. These attributes can be anything: mobility, ease of play, or even dashing good looks!
-        p Finally, Blitzcrank examines <span class="bold">you</span> by looking at all the champions that <span class="bold">you</span> play. He determines which champion attributes are your favorite. By combining the data from the special champion attributes with your own personal preferences, Blitzcrank can make sure that your next champion will be one that <span class="bold">you truly love.</span>
-      .nav
-        span.bold Blitzcrank's Matchmaking Service
-        span.seperator |
-        a(href='/documentation.html') Documentation
-        span.seperator |
-        a(href='/about.html') About
-        span.seperator |
-        a(href='https://github.com/QuocAnhVu/LoL-Champion-Recommender') GitHub
+extends ./layout.jade
+
+block title
+  title Blitzcrank's Matchmaking Service
+
+block content
+  .heart-shape
+  .intro
+    .header
+      h1 Blitzcrank's Matchmaking Service
+      h2 Let the big robot discover which champions you will love!
+    .form
+      input.input.summoner_name(placeholder="Summoner Name")
+      //- input.region(placeholder="Region")
+      select.input.region.dropdown-content
+        option(value="NA") NA
+        option(value="EUW") EUW
+        option(value="EUNE") EUNE
+        option(value="KR") KR
+        option(value="BR") BR
+        option(value="LAN") LAN
+        option(value="LAS") LAS
+        option(value="OCE") OCE
+        option(value="RU") RU
+        option(value="TR") TR
+      button.submit Match Me &hearts;
+    .description
+      .h3 What is this?
+      p Blitzcrank connects summoners with champions that they will enjoy playing.
+      p He does this by looking at thousands and thousands of players and paying attention to the champions that are played together. He then uses these observations to assign special attributes to each champion. These attributes can be anything: mobility, ease of play, or even dashing good looks!
+      p Finally, Blitzcrank examines <span class="bold">you</span> by looking at all the champions that <span class="bold">you</span> play. He determines which champion attributes are your favorite. By combining the data from the special champion attributes with your own personal preferences, Blitzcrank can make sure that your next champion will be one that <span class="bold">you truly love.</span>
+    +nav("Blitzcrank's Matchmaking Service")
 
 
-    #content.hidden
-      .scrolltoarrow
-        span.glyphicon.glyphicon-menu-up
-        span.arrowlabel Top
-      //- .recommended.list
-      //-   h3 You should try:
-      //-   ul.user_rec
-      //- .mostplayed.list
-      //-   h3 Your 3 most played champions are:
-      //-   ul.user_mp
-      //-   h3 People with similar preferences play:
-      //-   ul.other_mp
-      .compatibility
-        .title.compatibility
-          h3 Your Compatibility Scores
-        ol.compatibility.container
+  #content.hidden
+    .scrolltoarrow
+      span.glyphicon.glyphicon-menu-up
+      span.arrowlabel Top
+    //- .recommended.list
+    //-   h3 You should try:
+    //-   ul.user_rec
+    //- .mostplayed.list
+    //-   h3 Your 3 most played champions are:
+    //-   ul.user_mp
+    //-   h3 People with similar preferences play:
+    //-   ul.other_mp
+    .compatibility
+      .title.compatibility
+        h3 Your Compatibility Scores
+      ol.compatibility.container

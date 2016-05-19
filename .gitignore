@@ -1,5 +1,7 @@
 __pycache__/
 .sass-cache/
+web/bower_components/*
+web/**/*.css
 *.css.map
 *db/*
 tmp/*.json

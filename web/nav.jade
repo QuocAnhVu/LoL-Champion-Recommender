@@ -1,0 +1,18 @@
+mixin navItem(currentPage, pageName, pageLink)
+  if currentPage == pageName
+    span.bold #{pageName}
+  else
+    a(href=pageLink) #{pageName}
+
+mixin navSeperator
+  span.nav-seperator |
+
+mixin nav(currentPage)
+  .nav
+    +navItem(currentPage, 'Blitzcrank\'s Matchmaking Service', '/')
+    +navSeperator
+    +navItem(currentPage, 'Documentation', '/documentation.html')
+    +navSeperator
+    +navItem(currentPage, 'About', '/about.html')
+    +navSeperator
+    +navItem(currentPage, 'GitHub', 'https://github.com/QuocAnhVu/LoL-Champion-Recommender')
