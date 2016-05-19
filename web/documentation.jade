@@ -1,12 +1,9 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset='utf-8')
-    title= "Documentation | Blitzcrank's Matchmaking Service"
-    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel='stylesheet')
-    link(href='heart.css', rel='stylesheet')
-    link(href='style.css', rel='stylesheet')
-  body
+extends ./layout.jade
+
+block title
+    title Documentation | Blitzcrank's Matchmaking System
+
+block content
     .intro
       .description
         h1 Documentation
@@ -19,14 +16,7 @@ html(lang="en")
         p Champion attributes are similar to in-game stats like armor, magic, and etc, but instead of combat stats, the attributes represent playstyle differences like the marksman-ness or the juggernaut-ness of a champion.
 
         p When a user enters their information into the web app, their own mastery data is scraped. The individual player's preferences are learned using their mastery data. The combination of individual preferences and champion attributes are combined to produce a single score for each champion. This score represents how likely a player will enjoy a champion.
-      .nav
-        a(href='/') Blitzcrank's Matchmaking Service
-        span.seperator |
-        span.bold Documentation
-        span.seperator |
-        a(href='/about.html') About
-        span.seperator |
-        a(href='https://github.com/QuocAnhVu/LoL-Champion-Recommender') GitHub
+      +nav('Documentation')
       .description
         h2 How do I reproduce this?
         p The actual training of the recommender consists of the following steps. 
@@ -54,14 +44,7 @@ html(lang="en")
         p Previous ambitious plans for this project included client side training of user preferences. This would have effectively turned the backend server into a proxy for the Riot API. With this critical step of offloading CPU load onto browsers, the scalability of this system would increase by a thousand fold.
 
         p #[span.bold Other work: ] The front end is very sparse in its current state. Also, I had originally planned to create top recommendations which would bias scores by the date since the user last played a champion.  
-      .nav
-        a(href='/') Blitzcrank's Matchmaking Service
-        span.seperator |
-        span.bold Documentation
-        span.seperator |
-        a(href='/about.html') About
-        span.seperator |
-        a(href='https://github.com/QuocAnhVu/LoL-Champion-Recommender') GitHub
+      +nav('Documentation')
       .description
         h2 Thank you!
         p If you've read this far, wow, I really appreciate that. This project of mines represents a lot to me. 

@@ -33,3 +33,12 @@
     top: -100px;
     right: 0px;
 }
+
+.heart-shape{
+  position: absolute;    
+  top: 20%;
+  left: 50%;
+  &, &:before, &:after {
+    background-color: rgb(250, 222, 76);
+  }
+}
