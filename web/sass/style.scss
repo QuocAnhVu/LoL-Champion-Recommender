@@ -57,20 +57,20 @@
 //     margin-right: 10%;
 //   }
 // }
-// .scrolltoarrow {
-//   position: sticky;
-//   float:left;
-//   top: 10%;
-//   margin-left: 10%;
-//   .glyphicon {
-//     font-size: 5em;
-//   }
-//   .arrowlabel {
-//     margin-left: 1.6em;
-//   }
-//   .glyphicon, .arrowlabel {
-//     float:left;
-//     clear:left;
-//   }
-//   cursor: pointer;
-// }
+.scrolltoarrow {
+  position: sticky;
+  float:left;
+  top: 10%;
+  margin-left: 10%;
+  .glyphicon {
+    font-size: 5em;
+  }
+  .arrowlabel {
+    margin-left: 1.6em;
+  }
+  .glyphicon, .arrowlabel {
+    float:left;
+    clear:left;
+  }
+  cursor: pointer;
+}
