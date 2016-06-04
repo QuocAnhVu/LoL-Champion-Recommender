@@ -1,0 +1,1 @@
+{ jade -w jade/ -o var/ & sass -w sass:./var/css/ & coffee --compile --watch --output var/js/ coffee/; }

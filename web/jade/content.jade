@@ -1,0 +1,40 @@
+mixin listItem(championName, championImage, compatibilityScore)
+  li.row.collection-item.valign-wrapper
+    .col.s4.m2
+      img.responsive-img.circle(src=championImage)
+    .col.s4.m2.valign #{championName}
+    .col.s3.push-s1.m6.push-m2.valign #{compatibilityScore}
+
+mixin exampleList
+  .row
+    ol.collection.with-header.col.m6.offset-m3.s12.l4.offset-l4
+      li.collection-header.center-align 
+        h4 Your Compatibility Scores
+      +listItem('Ahri', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Ahri.png', 4.24)
+      +listItem('Thresh', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Thresh.png', 3.20)
+      +listItem('Irelia', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Irelia.png', 2.84)
+      +listItem('Yasuo', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Yasuo.png', 2.49)
+      +listItem('LeBlanc', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Leblanc.png', 2.42)
+
+//- mixin tableItem(championName, championImage, compatibilityScore)
+//-   tr.row.collection-item.valign-wrapper
+//-     td.col.s4.m2
+//-       img.responsive-img.circle(src=championImage)
+//-     td.col.s4.m2.valign #{championName}
+//-     td.col.s3.push-s1.m6.push-m2.valign #{compatibilityScore}
+
+//- mixin exampleList
+//-   .row
+//-   .col.m6.offset-m3.s12.l4.offset-l4
+//-     table.striped
+//-       thead
+//-         tr
+//-           th Empty
+//-           th Champion Name
+//-           th Score
+//-       tbody
+//-         +tableItem('Ahri', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Ahri.png', 4.24)
+//-         +tableItem('Thresh', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Thresh.png', 3.20)
+//-         +tableItem('Irelia', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Irelia.png', 2.84)
+//-         +tableItem('Yasuo', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Yasuo.png', 2.49)
+//-         +tableItem('LeBlanc', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Leblanc.png', 2.42)

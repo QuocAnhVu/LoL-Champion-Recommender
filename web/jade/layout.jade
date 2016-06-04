@@ -4,14 +4,17 @@ doctype html
 html(lang="en")
   head
     meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
     block title
         title Blitzcrank's Matchmaking Service
-    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel='stylesheet')
-    link(href='bower_components/Materialize/bin/materialize.css', rel='stylesheet')
+
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css', rel='stylesheet')
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css', rel='stylesheet')
     link(href='css/heart.css', rel='stylesheet')
     link(href='css/style.css', rel='stylesheet')
-    script(src='http://code.jquery.com/jquery-2.2.3.min.js')
-    script(src='bower_components/Materialize/bin/materialize.js')
-    script(src='script.js')
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js')
+    script(src='js/index.js')
   body
     block content

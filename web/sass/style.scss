@@ -15,9 +15,9 @@
 // .bold {
 //   font-weight: bold;
 // }
-// .nav-seperator {
-//   margin: 0 1em;
-// }
+.nav-seperator {
+  margin: 0 1em;
+}
 // .intro {
 //   width: 40em;
 //   margin-top: 5%;
@@ -31,25 +31,25 @@
 // .hidden {
 //   display: none;
 // }
-// .small-img {
-//   height: 2em;
-//   width: 2em;
-// }
+.small-img {
+  height: 2em;
+  width: 2em;
+}
 // li.compatibility {
 //   font-size: 2em;
 // }
 // .top-buffer {
 //   margin-top: 1em;
 // }
-// ol {
-//   list-style: none;
-//   &:before {
-//     counter-reset: item;
-//   }
-//   li {
-//     counter-increment: item;
-//   }
-// }
+ol {
+  list-style: none;
+  // &:before {
+  //   counter-reset: item;
+  // }
+  // li {
+  //   counter-increment: item;
+  // }
+}
 // .title {
 //   margin-left:auto;
 //   margin-right:auto;
@@ -57,6 +57,8 @@
 //     margin-right: 10%;
 //   }
 // }
+
+
 .scrolltoarrow {
   position: sticky;
   float:left;

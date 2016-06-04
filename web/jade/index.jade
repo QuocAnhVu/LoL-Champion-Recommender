@@ -5,37 +5,37 @@ block title
 
 block content
   .heart-shape
-  .intro
+  #intro.container
     .header
       h1 Blitzcrank's Matchmaking Service
-      h2 Let the big robot discover which champions you will love!
-    .form
-      input.input.summoner_name(placeholder="Summoner Name")
-      //- input.region(placeholder="Region")
-      select.input.region.dropdown-content
-        option(value="NA") NA
-        option(value="EUW") EUW
-        option(value="EUNE") EUNE
-        option(value="KR") KR
-        option(value="BR") BR
-        option(value="LAN") LAN
-        option(value="LAS") LAS
-        option(value="OCE") OCE
-        option(value="RU") RU
-        option(value="TR") TR
-      button.submit Match Me &hearts;
+    form.row
+      .input-field.col.m6.s12.validate
+        input#form-name
+        label(for="form-name") Summoner Name
+      .input-field.col.m3.s6
+        select#form-region
+          option(value="NA") NA
+          option(value="EUW") EUW
+          option(value="EUNE") EUNE
+          option(value="KR") KR
+          option(value="BR") BR
+          option(value="LAN") LAN
+          option(value="LAS") LAS
+          option(value="OCE") OCE
+          option(value="RU") RU
+          option(value="TR") TR
+      button.col.m3.s6.btn Match Me &hearts;
     .description
       .h3 What is this?
       p Blitzcrank connects summoners with champions that they will enjoy playing.
       p He does this by looking at thousands and thousands of players and paying attention to the champions that are played together. He then uses these observations to assign special attributes to each champion. These attributes can be anything: mobility, ease of play, or even dashing good looks!
       p Finally, Blitzcrank examines <span class="bold">you</span> by looking at all the champions that <span class="bold">you</span> play. He determines which champion attributes are your favorite. By combining the data from the special champion attributes with your own personal preferences, Blitzcrank can make sure that your next champion will be one that <span class="bold">you truly love.</span>
     +nav("Blitzcrank's Matchmaking Service")
-
-
+  .divider
   #content
-    .scrolltoarrow
-      span.glyphicon.glyphicon-menu-up
-      span.arrowlabel Top
+    //- .scrolltoarrow
+    //-   span.glyphicon.glyphicon-menu-up
+    //-   span.arrowlabel Top
     //- .recommended.list
     //-   h3 You should try:
     //-   ul.user_rec
@@ -44,8 +44,5 @@ block content
     //-   ul.user_mp
     //-   h3 People with similar preferences play:
     //-   ul.other_mp
-    .compatibility
-      .title.compatibility
-        h3 Your Compatibility Scores
-      ol.compatibility.container
-        include ./dev-list.jade
+    include ./content.jade
+    +exampleList
